@@ -25,3 +25,4 @@ pnpm-debug.log*
 
 # raw brand assets not needed in the deployed site
 brand-archive/
+.vercel
