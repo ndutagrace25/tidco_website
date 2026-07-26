@@ -1,0 +1,87 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import fieldConstruction from "../assets/images/field-construction-site.jpg";
+import installTeam from "../assets/images/installation-team-pole.jpg";
+import fieldTech from "../assets/images/field-technician-install.jpg";
+import partnershipExpo from "../assets/images/industry-partnership-expo.jpg";
+import { values, whatsappLink } from "../data/site";
+---
+
+<Layout title="About Us">
+  <section class="bg-brand-950 py-20 text-white">
+    <div class="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+      <h1 class="text-4xl font-extrabold sm:text-5xl">About Tidco Networks</h1>
+      <p class="mt-5 text-lg text-steel-200">
+        A Kenya-based internet service provider building reliable connectivity for North Eastern
+        Kenya — and beyond.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-white py-20">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-extrabold text-steel-900">Our Story</h2>
+      <p class="mt-6 text-steel-600">
+        Tidco Networks was founded to close the connectivity gap in North Eastern Kenya. From our
+        base in Garissa, we've extended our network into Wajir, Mandera and Marsabit, and taken
+        our business and fiber solutions as far as Nairobi — proving that quality internet
+        shouldn't depend on where you live.
+      </p>
+      <p class="mt-4 text-steel-600">
+        We stay hands-on: our own field teams plan routes, erect poles, and run installations, so
+        every connection is backed by people who understand the terrain and the community they
+        serve.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-steel-50 py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-3xl font-extrabold text-steel-900">The Tidco Way</h2>
+        <p class="mt-4 text-steel-600">Six principles that shape every rollout and every customer call.</p>
+      </div>
+      <div class="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          values.map((value) => (
+            <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-steel-100">
+              <h3 class="text-base font-bold text-brand-700">{value.title}</h3>
+              <p class="mt-2 text-sm text-steel-600">{value.detail}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-3xl font-extrabold text-steel-900">On the Ground</h2>
+        <p class="mt-4 text-steel-600">Our teams at work, rolling out and maintaining the network.</p>
+      </div>
+      <div class="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4">
+        <Image src={installTeam} alt="Installation team carrying a pole" width={400} height={400} class="h-48 w-full rounded-2xl object-cover" />
+        <Image src={fieldConstruction} alt="Field construction site" width={400} height={533} class="h-48 w-full rounded-2xl object-cover" />
+        <Image src={fieldTech} alt="Field technician on site" width={400} height={521} class="h-48 w-full rounded-2xl object-cover" />
+        <Image src={partnershipExpo} alt="Tidco Networks team at an industry expo" width={400} height={385} class="h-48 w-full rounded-2xl object-cover" />
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-brand-600 py-16">
+    <div class="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-extrabold text-white sm:text-4xl">Want to work with us?</h2>
+      <p class="mt-4 text-brand-100">Get in touch to discuss coverage, business fiber, or partnership opportunities.</p>
+      <a
+        href={whatsappLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-8 inline-block rounded-full bg-white px-8 py-4 text-base font-semibold text-brand-700 hover:bg-brand-50"
+      >
+        Chat on WhatsApp
+      </a>
+    </div>
+  </section>
+</Layout>

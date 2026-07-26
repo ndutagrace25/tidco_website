@@ -1,0 +1,119 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/brand/tidco-logo.png";
+import { whatsappLink, telLink, site } from "../data/site";
+
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/packages", label: "Packages" },
+  { href: "/coverage", label: "Coverage" },
+  { href: "/about", label: "About Us" },
+  { href: "/contact", label: "Contact" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 border-b border-steel-100 bg-white/95 backdrop-blur">
+  <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+    <a href="/" class="flex shrink-0 items-center gap-2">
+      <Image src={logo} alt={site.name} width={170} height={99} class="h-10 w-auto sm:h-12" />
+    </a>
+
+    <nav class="hidden items-center gap-8 lg:flex">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              "text-sm font-semibold transition-colors hover:text-brand-600",
+              currentPath === link.href ? "text-brand-600" : "text-steel-700",
+            ]}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="hidden items-center gap-3 lg:flex">
+      <a
+        href={telLink}
+        class="text-sm font-bold text-steel-800 hover:text-brand-600"
+      >
+        {site.phone}
+      </a>
+      <a
+        href={whatsappLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-full bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-700"
+      >
+        Get Connected
+      </a>
+    </div>
+
+    <button
+      id="menu-toggle"
+      type="button"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      class="flex h-10 w-10 items-center justify-center rounded-lg text-steel-800 lg:hidden"
+    >
+      <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+      <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="hidden h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="hidden border-t border-steel-100 bg-white lg:hidden">
+    <nav class="flex flex-col gap-1 px-4 py-4 sm:px-6">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              "rounded-lg px-3 py-2.5 text-base font-semibold",
+              currentPath === link.href
+                ? "bg-brand-50 text-brand-700"
+                : "text-steel-700 hover:bg-steel-50",
+            ]}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <div class="mt-3 flex flex-col gap-3 border-t border-steel-100 pt-4">
+        <a href={telLink} class="text-base font-bold text-steel-800">
+          Call {site.phone}
+        </a>
+        <a
+          href={whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded-full bg-brand-600 px-5 py-3 text-center text-base font-semibold text-white shadow-sm"
+        >
+          Get Connected on WhatsApp
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  const iconOpen = document.getElementById("icon-open");
+  const iconClose = document.getElementById("icon-close");
+
+  toggle?.addEventListener("click", () => {
+    const isHidden = menu?.classList.contains("hidden");
+    menu?.classList.toggle("hidden");
+    iconOpen?.classList.toggle("hidden");
+    iconClose?.classList.toggle("hidden");
+    toggle.setAttribute("aria-expanded", String(!!isHidden));
+  });
+</script>

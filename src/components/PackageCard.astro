@@ -1,0 +1,77 @@
+---
+import type { Package } from "../data/site";
+import { whatsappLink } from "../data/site";
+
+interface Props {
+  pkg: Package;
+}
+
+const { pkg } = Astro.props;
+---
+
+<div
+  class:list={[
+    "relative flex flex-col rounded-2xl border p-8 shadow-sm transition-transform hover:-translate-y-1",
+    pkg.popular
+      ? "border-brand-600 bg-brand-900 text-white shadow-lg"
+      : "border-steel-200 bg-white",
+  ]}
+>
+  {
+    pkg.popular && (
+      <span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-brand-500 px-4 py-1 text-xs font-bold uppercase tracking-wide text-white shadow">
+        Most Popular
+      </span>
+    )
+  }
+
+  <h3 class:list={["text-lg font-bold", pkg.popular ? "text-white" : "text-steel-900"]}>
+    {pkg.name}
+  </h3>
+  <p class:list={["mt-1 text-4xl font-extrabold", pkg.popular ? "text-white" : "text-brand-700"]}>
+    {pkg.speed}
+  </p>
+
+  <p class:list={["mt-4 flex items-baseline gap-1", pkg.popular ? "text-white" : "text-steel-900"]}>
+    <span class="text-3xl font-extrabold">KES {pkg.price.toLocaleString()}</span>
+    <span class={pkg.popular ? "text-steel-200" : "text-steel-500"}>/month</span>
+  </p>
+
+  <p class:list={["mt-3 text-sm", pkg.popular ? "text-steel-100" : "text-steel-600"]}>
+    {pkg.bestFor}
+  </p>
+
+  <ul class="mt-6 flex-1 space-y-3 text-sm">
+    {
+      pkg.features.map((feature) => (
+        <li class:list={["flex items-start gap-2", pkg.popular ? "text-steel-100" : "text-steel-700"]}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class:list={["mt-0.5 h-5 w-5 shrink-0", pkg.popular ? "text-brand-300" : "text-brand-600"]}
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+          {feature}
+        </li>
+      ))
+    }
+  </ul>
+
+  <a
+    href={whatsappLink}
+    target="_blank"
+    rel="noopener noreferrer"
+    class:list={[
+      "mt-8 block rounded-full px-6 py-3 text-center text-sm font-semibold transition-colors",
+      pkg.popular
+        ? "bg-white text-brand-700 hover:bg-brand-50"
+        : "bg-brand-600 text-white hover:bg-brand-700",
+    ]}
+  >
+    Choose {pkg.speed}
+  </a>
+</div>

@@ -1,0 +1,36 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+
+@theme {
+  /* Brand blue — sampled from the Tidco Networks logo gradient */
+  --color-brand-50: #eaf4ff;
+  --color-brand-100: #d2e8ff;
+  --color-brand-200: #a6d0ff;
+  --color-brand-300: #70b3ff;
+  --color-brand-400: #3d95fa;
+  --color-brand-500: #0f7ae8;
+  --color-brand-600: #0a63c4;
+  --color-brand-700: #0b4fa0;
+  --color-brand-800: #0d3f80;
+  --color-brand-900: #0a2f66;
+  --color-brand-950: #071f45;
+
+  /* Steel — the silver/metal accent from the logo lettering */
+  --color-steel-50: #f7f8fa;
+  --color-steel-100: #eef0f4;
+  --color-steel-200: #dde1e8;
+  --color-steel-300: #c3c9d4;
+  --color-steel-400: #a3abbb;
+  --color-steel-500: #8891a4;
+  --color-steel-600: #6b7488;
+  --color-steel-700: #545b6c;
+  --color-steel-800: #3d4250;
+  --color-steel-900: #292d38;
+  --color-steel-950: #1a1c23;
+
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+}
