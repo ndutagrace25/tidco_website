@@ -65,6 +65,12 @@ export const coverageAreas = [
   { name: "Marsabit", note: "" },
 ];
 
+export const vision =
+  "Tidco Networks aspires to be the undisputed leader and preferred strategic partner for telecommunications infrastructure development in Kenya and East Africa. We envision a future where our foundational work enables ubiquitous, high-speed digital connectivity, fostering economic growth, innovation, and social inclusion across the region.";
+
+export const mission =
+  "Our mission is to meticulously plan, expertly deploy, and diligently maintain resilient and scalable fiber optic infrastructure. We achieve this by delivering professional groundwork services that empower our clients — telecom operators, ISPs, and government bodies — to provide seamless, high-performance connectivity, thereby bridging the digital divide and enhancing the quality of life for all Kenyans.";
+
 export const values = [
   {
     title: "Kenya-based",
